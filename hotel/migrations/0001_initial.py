@@ -5,45 +5,83 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Amenities',
+            name="Amenities",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amenity', models.CharField(max_length=70)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("amenity", models.CharField(max_length=70)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Hotel',
+            name="Hotel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('hotel_name', models.CharField(max_length=100)),
-                ('price', models.IntegerField()),
-                ('address', models.CharField(max_length=150)),
-                ('description', models.CharField(max_length=250)),
-                ('cover_image', models.ImageField(upload_to='cover_image')),
-                ('rating', models.IntegerField(choices=[(1, 'Poor'), (2, 'Average'), (3, 'Ordinary'), (4, 'Good'), (5, 'Excellent')])),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('amenities', models.ManyToManyField(to='hotel.amenities')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("hotel_name", models.CharField(max_length=100)),
+                ("price", models.IntegerField()),
+                ("address", models.CharField(max_length=150)),
+                ("description", models.CharField(max_length=250)),
+                ("cover_image", models.ImageField(upload_to="cover_image")),
+                (
+                    "rating",
+                    models.IntegerField(
+                        choices=[
+                            (1, "Poor"),
+                            (2, "Average"),
+                            (3, "Ordinary"),
+                            (4, "Good"),
+                            (5, "Excellent"),
+                        ]
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("amenities", models.ManyToManyField(to="hotel.amenities")),
             ],
         ),
         migrations.CreateModel(
-            name='HotelImage',
+            name="HotelImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='hotel/images')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('hotel', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='hotel.hotel')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("image", models.ImageField(upload_to="hotel/images")),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "hotel",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING, to="hotel.hotel"
+                    ),
+                ),
             ],
         ),
     ]
